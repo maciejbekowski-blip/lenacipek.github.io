@@ -1,1 +1,173 @@
-# lenacipek.github.io
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lena </title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            color: white;
+            background: radial-gradient(circle, #321047, #09000f 70%);
+        }
+
+        /* Animowane kółka w tle */
+        .circle {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: #ff0080;
+            filter: blur(100px);
+            opacity: 0.35;
+            animation: move 6s infinite alternate ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            top: -100px;
+            left: -100px;
+        }
+
+        .circle:nth-child(2) {
+            bottom: -100px;
+            right: -100px;
+            background: #7000ff;
+            animation-delay: 2s;
+        }
+
+        @keyframes move {
+            from {
+                transform: translate(0, 0);
+            }
+            to {
+                transform: translate(150px, 100px);
+            }
+        }
+
+        .box {
+            position: relative;
+            z-index: 2;
+            width: min(90%, 600px);
+            padding: 45px 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 25px;
+            background: rgba(20, 10, 30, .75);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 50px rgba(255,0,128,.25);
+        }
+
+        h1 {
+            font-size: clamp(35px, 8vw, 65px);
+            margin: 0 0 15px;
+            color: #ff4b9b;
+            text-shadow: 0 0 20px #ff0080;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            50% {
+                transform: scale(1.04);
+            }
+        }
+
+        p {
+            color: #ccc;
+            font-size: 18px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            background: #ff0080;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255,0,128,.5);
+            transition: .2s;
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px rgba(255,0,128,.8);
+        }
+
+        #wynik {
+            margin-top: 20px;
+            min-height: 28px;
+            color: #ff8ac5;
+            font-weight: bold;
+        }
+
+        .counter {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <div class="box">
+        <h1>Lena debilu kliknij</h1>
+
+        <p>
+            Oficjalna strona Leny™
+        </p>
+
+        <button onclick="klik()">
+            KLIKNIJ 👀
+        </button>
+
+        <div id="wynik"></div>
+
+        <div class="counter">
+            Kliknięcia: <span id="licznik">0</span>
+        </div>
+    </div>
+
+    <script>
+        let liczba = 0;
+
+        const teksty = [
+            "Lena deklu poco klikasz",
+            "Po co klikasz? XD",
+            "Jeszcze raz?",
+            "jestes glupia ?",
+            "smierdzi ci z dupy  ",
+            "poco debilu."
+        ];
+
+        function klik() {
+            liczba++;
+
+            document.getElementById("licznik").textContent = liczba;
+
+            let losowy = teksty[Math.floor(Math.random() * teksty.length)];
+
+            document.getElementById("wynik").textContent = losowy;
+        }
+    </script>
+
+</body>
+</html>
+```
